@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Main from "./components/Main";
+import Result from "./components/Result";
 function App() {
+  const [input, setInput] = useState(
+    {
+      initialInvestment: 1000,
+      annualInvestment: 100,
+      duration: 2,
+      expectedReturns: 5,
+    },
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app min-h-full ">
+      <Navbar/>
+      <Hero input={input} setInput={setInput}/>
+      <Main data={input}/>
+      <Result input={input}/>
     </div>
   );
 }
